@@ -51,4 +51,9 @@ sweepdir "$imgpath"
 sweepdir "$docpath"
 sweepdir "$miscpath"
 
+for dir in "$imgpath" "$docpath" "$miscpath"; do
+    if [ -d "$dir" ] && [ -z "$(ls -A "$dir")" ]; then
+        rmdir "$dir"
+    fi
+done
 
