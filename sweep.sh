@@ -29,12 +29,12 @@ sweepdir() {
         if [[ -d "$filepath" ]]; then
             continue
         fi
-        fileformat=$(file -I "$filepath" | awk -F '[:;]' '{print $2}')
+        fileformat=$(file -I "$filepath" | awk -F '[:;]' '{print $2}' | tr -d '[:space:]')
         if [[ $(echo $fileformat | cut -f 1 -d '/') == "image" ]];then
             if [[ "$1" != "$imgpath" ]]; then
                 mv "$filepath" "$imgpath"
             fi
-        elif [[ $(echo $fileformat | cut -f 1 -d '/') == "text" ]];then #TODO add more file formats
+        elif [[ $fileformat == "application/pdf" ]];then #TODO add more file formats
             if [[ "$1" != "$docpath" ]]; then
                 mv "$filepath" "$docpath"
             fi
