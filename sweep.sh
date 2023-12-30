@@ -6,6 +6,7 @@ docpath="$HOME/Downloads/Docs"
 miscpath="$HOME/Downloads/Misc"
 ignored=""
 
+#FLAWED: if no file in certain directory, directory will be made and deleted
 if [ ! -d "$imgpath" ]; then
     mkdir $imgpath
 fi
